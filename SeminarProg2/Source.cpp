@@ -16,6 +16,19 @@ void ADD(KCM* kcm, int number) {
     }
 }
 
+KCM Ziednotenia(KCM kcm1, KCM kcm2) {
+    KCM result;
+    Inicializacia(&result);
+
+    for (int i = 1; i <= 1000; i++) {
+        if (kcm1.pole[i] || kcm2.pole[i]) {
+            result.pole[i] = 1;
+        }
+    }
+
+    return result;
+}
+
 int main() {
 	return 0;
 }
