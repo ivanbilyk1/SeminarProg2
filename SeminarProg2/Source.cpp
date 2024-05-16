@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include "stdlib.h"
+#include "time.h"
 
 typedef struct {
 	int pole[101];
@@ -44,17 +46,25 @@ KCM Pretin(KCM kcm1, KCM kcm2) {
 
 
 int main() {
+    srand((unsigned int)time(NULL));
+    int n1 = rand() % (10 + 1);
+    int n2 = rand() % (10 + 1);
+    int n3 = rand() % (10 + 1);
+    int n4 = rand() % (10 + 1);
+    int n5 = rand() % (10 + 1);
+    int n6 = rand() % (10 + 1);
+    printf("%d %d %d %d %d %d\n", n1, n2, n3, n4, n5, n6);
     KCM kcm1, kcm2, ziednotenia, pretin;
     Inicializacia(&kcm1);
     Inicializacia(&kcm2);
 
-    ADD(&kcm1, 1);
-    ADD(&kcm1, 2);
-    ADD(&kcm1, 3);
+    ADD(&kcm1, n1);
+    ADD(&kcm1, n2);
+    ADD(&kcm1, n3);
 
-    ADD(&kcm2, 3);
-    ADD(&kcm2, 4);
-    ADD(&kcm2, 5);
+    ADD(&kcm2, n4);
+    ADD(&kcm2, n5);
+    ADD(&kcm2, n6);
 
     ziednotenia = Ziednotenia(kcm1, kcm2);
     pretin = Pretin(kcm1, kcm2);
@@ -72,7 +82,7 @@ int main() {
         if (pretin.pole[i] == 1) {
             printf("%d ", i);
         }
-    }
+    } 
     printf("}\n");
 
 	return 0;
