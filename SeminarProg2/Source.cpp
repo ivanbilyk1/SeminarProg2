@@ -8,7 +8,18 @@ typedef struct {
 }KCM;
 
 void Inicializacia(KCM* kcm, int hranica) {
+    if (hranica <= 0) {
+        printf("Neplatna hranica\n");
+        return;
+    }
+
     kcm->pole = (int*)malloc(hranica * sizeof(int));
+
+    if (kcm->pole == NULL) {
+        printf("Problem alokacia pamate\n");
+        return;
+    }
+
     kcm->hranica = hranica;
     for (int i = 0; i < hranica; i++) {
         kcm->pole[i] = 0;
@@ -42,8 +53,10 @@ void Pretin(KCM* kcm1, KCM* kcm2, KCM* result) {
 }
 
 void FreeKCM(KCM* kcm) {
-    free(kcm->pole);
-    kcm->pole = NULL;
+    if (kcm->pole != NULL) {
+        free(kcm->pole);
+        kcm->pole = NULL;
+    }
     kcm->hranica = 0;
 }
 
@@ -55,7 +68,9 @@ void print(int hranica) {
     int n5 = rand() % ((hranica - 1) + 1);
     int n6 = rand() % ((hranica - 1) + 1);
     printf("%d %d %d    %d %d %d\n", n1, n2, n3, n4, n5, n6);
+
     KCM kcm1, kcm2, ziednotenia, pretin;
+        
     Inicializacia(&kcm1, hranica);
     Inicializacia(&kcm2, hranica);
     Inicializacia(&ziednotenia, hranica);
