@@ -1,11 +1,4 @@
-#include <stdio.h>
-#include "stdlib.h"
-#include "time.h"
-
-typedef struct {
-	int* pole;
-    int hranica;
-}KCM;
+#include "KCM.h"
 
 void Inicializacia(KCM* kcm, int hranica) {
     if (hranica <= 0) {
@@ -107,19 +100,4 @@ void print(int hranica) {
     FreeKCM(&kcm2);
     FreeKCM(&pretin);
     FreeKCM(&ziednotenia);
-}
-
-int main() {
-    srand((unsigned int)time(NULL));
-    int hranica;
-    printf("zadajte hranicu: ");
-    scanf("%d", &hranica);
-
-    if (hranica <= 0) {
-        printf("Hranica musi byt vacsia ako nula.\n");
-        return 1;
-    }
-
-    print(hranica);
-	return 0;
 }
